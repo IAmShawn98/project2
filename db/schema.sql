@@ -10,6 +10,7 @@ CREATE TABLE employees (
     hours_used INT (10),
     hours_remaining INT (10),
     start_date DATE,
+    end_date DATE,
     admin BOOLEAN DEFAULT false
     );
     
