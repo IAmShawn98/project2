@@ -3,16 +3,19 @@ var db = require("../models");
 module.exports = function(app) {
   // Login page
   app.get("/", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
+    db.login.findAll({}).then(function() {
+      res.render("index");
     });
   });
 
-  // main admin page
+  // Main admin page
   app.get("/admin", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
+    db.employees.findAll({}).then(function() {
+      res.render("admin");
     });
+    // add tiers to this page also....not sure if this is correct
+    // db.tiers.findAll({}).then(function() {
+    //   res.render("admin");
   });
 
 
