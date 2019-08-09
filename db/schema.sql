@@ -17,7 +17,7 @@ CREATE TABLE employees (
 CREATE TABLE login (
 	id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     team_member VARCHAR (100) NOT NULL,
-    login VARCHAR (100) NOT NULL,
+    username VARCHAR (100) NOT NULL,
     password VARCHAR (100) NOT NULL
     );
     
