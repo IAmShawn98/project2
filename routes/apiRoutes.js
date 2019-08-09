@@ -1,7 +1,7 @@
 var db = require("../models");
 
-var passport = require("passport");
-LocalStrategy = require("passport-local").Strategy;
+// var passport = require("passport");
+// LocalStrategy = require("passport-local").Strategy;
 
 module.exports = function(app) {
   // LOGIN PAGE
@@ -11,33 +11,33 @@ module.exports = function(app) {
     });
   });
 
-  // LOGIN AUTHENTICATION Configuration
-  passport.use(
-    new LocalStrategy(function(username, password, done) {
-      login.findOne({ username: username }, function(err, login) {
-        if (err) {
-          return done(err);
-        }
-        if (!user) {
-          return done(null, false, { message: "Incorrect username." });
-        }
-        if (!user.validPassword(password)) {
-          return done(null, false, { message: "Incorrect password." });
-        }
-        return done(null, login);
-      });
-    })
-  );
+  // // LOGIN AUTHENTICATION Configuration
+  // passport.use(
+  //   new LocalStrategy(function(username, password, done) {
+  //     login.findOne({ username: username }, function(err, login) {
+  //       if (err) {
+  //         return done(err);
+  //       }
+  //       if (!user) {
+  //         return done(null, false, { message: "Incorrect username." });
+  //       }
+  //       if (!user.validPassword(password)) {
+  //         return done(null, false, { message: "Incorrect password." });
+  //       }
+  //       return done(null, login);
+  //     });
+  //   })
+  // );
 
-  // LOGIN AUTHENTICATION Routing
-  app.post(
-    "/",
-    passport.authenticate("local", {
-      failureFlash: "Invalid username or password.",
-      successRedirect: "/admin",
-      failureRedirect: "/index"
-    })
-  );
+  // // LOGIN AUTHENTICATION Routing
+  // app.post(
+  //   "/",
+  //   passport.authenticate("local", {
+  //     failureFlash: "Invalid username or password.",
+  //     successRedirect: "/admin",
+  //     failureRedirect: "/index"
+  //   })
+  // );
 
   // ADMIN PAGE
   app.get("/admin", function(req, res) {
