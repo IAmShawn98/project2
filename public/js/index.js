@@ -63,23 +63,27 @@ var refreshExamples = function() {
 // Save the new example to the db and refresh the list
 var handleFormSubmit = function(event) {
   event.preventDefault();
+  useremail = fEmail.value;
+  password = fPassword.value;
 
-  var example = {
-    text: $exampleText.val().trim(),
-    description: $exampleDescription.val().trim()
-  };
+  console.log("event: " + useremail + " password: " + password);
 
-  if (!(example.text && example.description)) {
-    alert("You must enter an example text and description!");
-    return;
-  }
+  // var example = {
+  //   text: $exampleText.val().trim(),
+  //   description: $exampleDescription.val().trim()
+  // };
 
-  API.saveExample(example).then(function() {
-    refreshExamples();
-  });
+  // if (!(example.text && example.description)) {
+  //   alert("You must enter an example text and description!");
+  //   return;
+  // }
 
-  $exampleText.val("");
-  $exampleDescription.val("");
+  // API.saveExample(example).then(function() {
+  //   refreshExamples();
+  // });
+
+  // $exampleText.val("");
+  // $exampleDescription.val("");
 };
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
