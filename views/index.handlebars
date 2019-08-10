@@ -11,7 +11,7 @@
       {{!-- Site 'Login Form' Card Body --}}
       <div class="card-body p-0 m-0">
         {{!-- Site 'Login Form' Form Content --}}
-        <form>
+        <form id="login">
           {{!-- Site 'Login Form' group 'Email Address Field' --}}
           <div class="form-group input-group">
             {{!-- Site 'Login Form' prepended 'Email Fa Icon' --}}
@@ -30,18 +30,18 @@
             {{!-- Site 'Login Form' 'Password Input Field' --}}
             <input type="text" class="form-control" name="fPassword" id="fPassword" placeholder="***************">
           </div>
+          {{!-- Create Account Link + LogIn Button --}}
+          <div class="row text-center">
+            <div class="col-md-6">
+              {{!-- Create New Account --}}
+              <button type="button" class="btn btn-none text-primary">Create New Account</button>
+            </div>
+            <div class="col-md">
+              {{!-- Create New Account --}}
+              <button type="button" id="submit" class="btn btn-orange col-md-7">Log In</a>
+            </div>
+          </div>
         </form>
-      </div>
-      {{!-- Create Account Link + LogIn Button --}}
-      <div class="row text-center">
-        <div class="col-md-6">
-          {{!-- Create New Account --}}
-          <button class="btn btn-none text-primary" href="#">Create New Account</button>
-        </div>
-        <div class="col-md">
-          {{!-- Create New Account --}}
-          <button class="btn btn-orange col-md-7" href="#">Log In</a>
-        </div>
       </div>
     </div>
     {{!-- Site 'Footer' Copyright --}}
