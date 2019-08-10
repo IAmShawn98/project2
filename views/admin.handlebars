@@ -1,0 +1,263 @@
+{{!-- Site Navigation [START] --}}
+<nav class="navbar navbar-expand-lg navbar-white bg-white shadow-md p-5">
+    <div class="navbar-brand">
+        {{!-- Site Navigation 'Icon Brand' --}}
+        <span>
+            {{!-- Site Navigation 'Icon Wrap' --}}
+            {{!-- Site Navbar Brand --}}
+            <span id="brandLogoStyle" class="brand-name">
+                <b class="text-dark">Get It</b><strong class="text-danger"> Together</strong>
+            </span>
+        </span>
+    </div>
+
+    {{!-- Site Navigation 'Collapse Content' --}}
+    <div class="collapse navbar-collapse" id="navbarNav">
+        {{!-- Currently this is just filler to --}}
+        {{!-- Push the 'admin text' right --}}
+    </div>
+
+    {{!-- Site Navigation 'Admin' text --}}
+    <span class="navbar-text">
+        <h4 class="text-muted">Admin</h4>
+    </span>
+</nav>
+{{!-- Site Navigation [END] --}}
+
+{{!-- Site Info Table [START] --}}
+<div class="container-fluid mt-4">
+    <div class="ml-5">
+        {{!-- Site Info 'Team Info Table' Container --}}
+        <div class="container float-left">
+            {{!-- Site Info Welcome Container --}}
+            <div class="container-fluid">
+                {{!-- Site Info 'Welcome the User' --}}
+                <h2 id="userWelcomeSize" class="display-4">Welcome, <i id="fUserName">Username</i></h2>
+                <h5 class="text-muted">Your Team Information</h5>
+            </div>
+            {{!-- Site Info 'Team Info Table' --}}
+            <table class="table bg-white shadow-md">
+                {{!-- All of the HTML below is dummy data --}}
+                {{!-- Once we hook up the SQL database we --}}
+                {{!-- Will scrap all the 'thead' and 'tbody' --}}
+                {{!-- and populate it in the same format but --}}
+                {{!-- Purely from the server. The hard coded --}}
+                {{!-- Table below is purely a visual for what --}}
+                {{!-- the real table data will look like during --}}
+                {{!-- the production build of our application. --}}
+
+                {{!-- Whereever you see a '✂' icon is where you will cut --}}
+                {{!-- out the data and replace it with dynamic database code --}}
+                {{!-- We want to populate later on. --}}
+
+                {{!-- Site Team Info 'Table Heading' --}}
+                <thead id="pTableHead">
+                    {{!-- ✂ ---------------------------------------------------------------------  --}}
+                    <tr class="text-center">
+                        <th scope="col">Team Member</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Tier Level</th>
+                        <th scope="col">Hours Used</th>
+                        <th scope="col">Hours Remaining</th>
+                        <th scope="col">Start Date</th>
+                        <th scope="col">Table Actions</th>
+                    </tr>
+                    {{!-- ✂ ---------------------------------------------------------------------  --}}
+                </thead>
+                {{!-- Site Team Info 'Table Body' --}}
+                <tbody id="pTableBody">
+                    {{!-- ✂ ---------------------------------------------------------------------  --}}
+                    <tr class="text-center">
+                        <td>Billy Bob</td>
+                        <td>Accounting Associate</td>
+                        <td><span class="badge shadow-md level- blue">Blue</span></td>
+                        <td>22</td>
+                        <td>58</td>
+                        <td>5/5/2018</td>
+                        <td>
+                            {{!-- Table Edit Action --}}
+                            <button class="btn btn-default">
+                                <i id="btnEdit" class="fa fa-pencil text-warning" aria-hidden="true"></i>
+                            </button>
+
+                            {{!-- Table Delete Action --}}
+                            <button class="btn btn-default">
+                                <i id="btnDelete" class="fa fa-trash text-danger" aria-hidden="true"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class="text-center">
+                        <td>Lilly Bob</td>
+                        <td>Accounting Manager</td>
+                        <td><span class="badge shadow-md level- green">Green</span></td>
+                        <td>0</td>
+                        <td>120</td>
+                        <td>5/5/2012</td>
+                        <td>
+                            {{!-- Table Edit Action --}}
+                            <button class="btn btn-default">
+                                <i id="btnEdit" class="fa fa-pencil text-warning" aria-hidden="true"></i>
+                            </button>
+
+                            {{!-- Table Delete Action --}}
+                            <button class="btn btn-default">
+                                <i id="btnDelete" class="fa fa-trash text-danger" aria-hidden="true"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class="text-center">
+                        <td>Philly Bob</td>
+                        <td>Senior Executive CEO Part...</td>
+                        <td><span class="badge shadow-md level- purple">Purple</span></td>
+                        <td>0</td>
+                        <td>200</td>
+                        <td>12/12/1998</td>
+                        <td>
+                            {{!-- Table Edit Action --}}
+                            <button class="btn btn-default">
+                                <i id="btnEdit" class="fa fa-pencil text-warning" aria-hidden="true"></i>
+                            </button>
+
+                            {{!-- Table Delete Action --}}
+                            <button class="btn btn-default">
+                                <i id="btnDelete" class="fa fa-trash text-danger" aria-hidden="true"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class="text-center">
+                        <td>Millie Bob</td>
+                        <td>Programming Associate</td>
+                        <td><span class="badge shadow-md level- blue">Blue</span></td>
+                        <td>0</td>
+                        <td>58</td>
+                        <td>5/5/2018</td>
+                        <td>
+                            {{!-- Table Edit Action --}}
+                            <button class="btn btn-default">
+                                <i id="btnEdit" class="fa fa-pencil text-warning" aria-hidden="true"></i>
+                            </button>
+
+                            {{!-- Table Delete Action --}}
+                            <button class="btn btn-default">
+                                <i id="btnDelete" class="fa fa-trash text-danger" aria-hidden="true"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class="text-center">
+                        <td>Jack Dorsey</td>
+                        <td>Programming Manager</td>
+                        <td><span class="badge shadow-md level- green">Green</span></td>
+                        <td>0</td>
+                        <td>120</td>
+                        <td>5/5/2012</td>
+                        <td>
+                            {{!-- Table Edit Action --}}
+                            <button class="btn btn-default">
+                                <i id="btnEdit" class="fa fa-pencil text-warning" aria-hidden="true"></i>
+                            </button>
+
+                            {{!-- Table Delete Action --}}
+                            <button class="btn btn-default">
+                                <i id="btnDelete" class="fa fa-trash text-danger" aria-hidden="true"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    {{! -- ✂ ---------------------------------------------------------------------  --}}
+                </tbody>
+            </table>
+            {{!-- Site Add PTO --}}
+            <div class="row container ml-1 mb-5">
+                {{!-- Site 'Add PTO' Label --}}
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h5 class="text-muted">Add PTO</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="row container">
+                    {{!-- Site 'Add PTO' card --}}
+                    <div class="card" style="width: 80%;">
+                        {{!-- Site 'Add PTO' Body Content --}}
+                        <div class="card-body">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Team Member</th>
+                                        <th scope="col">Start Date</th>
+                                        <th scope="col">End Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        {{!-- New Members Name || NOTE: Autofill W/ Name --}}
+                                        <td>
+                                            <input type="text" class="form-control" name="fNewMember" id="fNewMember"
+                                                placeholder="Bob Smith">
+                                        </td>
+
+                                        {{!-- Start Date --}}
+                                        <td><input type="date" class="form-control" name="fDate" id="fDate"></td>
+
+                                        {{!-- End Date --}}
+                                        <td><input type="date" class="form-control" name="fDate" id="fDate"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <button class="btn btn-darkblue float-right">Add PTO</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{!-- Site Info Table [END] --}}
+
+        {{!-- Site Legend [START] --}}
+        <div id="legendCard" class="card">
+            <div class="card-body">
+                <table class="table">
+                    {{!-- Site 'Badge Legend' Table Head --}}
+                    <h4 class="text-center mb-4">Starting Hours</h4>
+                    <thead>
+                        <tr>
+                            <th scope="col">Tiers</th>
+                            <th scope="col">Hours</th>
+                        </tr>
+                    </thead>
+                    {{!-- Site 'Badge Legend' Table Body --}}
+                    <tbody>
+                        {{!-- All Badge Levels --}}
+                        <td>
+                            <span class="badge shadow-md level- blue">Blue</span>
+                            <span class="badge shadow-md level- orange mt-1">Orange</span>
+                            <span class="badge shadow-md level- green mt-1">Green</span>
+                            <span class="badge shadow-md level- purple mt-1">Purple</span>
+                        </td>
+                        {{!-- All Badge Hours --}}
+                        <td>
+                            <span class="badge level- transparent text-dark">80</span>
+                            <span class="badge level- transparent text-dark mt-2">80</span>
+                            <span class="badge level- transparent text-dark mt-2">120</span>
+                            <span class="badge level- transparent text-dark mt-2">200</span>
+                        </td>
+                    </tbody>
+                </table>
+                {{!-- Edit Link --}}
+                <span class="float-right ml-5"><a href="#Edit">Edit</a></span>
+            </div>
+        </div>
+    </div>
+</div>
+{{!-- Site Legend [END] --}}
+
+{{!-- Site Footer [START] --}}
+<footer class="footer mt-auto py-2">
+    <div class="container-fluid ml-5">
+        <span class="text-white">
+            Shawn, Connie, and A.J..
+            <br>
+            &reg; All Rights Reserved.
+        </span>
+    </div>
+</footer>
+{{!-- Site Footer [END] --}}

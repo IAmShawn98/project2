@@ -1,0 +1,71 @@
+/* Page Body Background & Styles */
+
+body {
+    background-color: #f2f2f2;
+    font-size: 80%;
+    font-family: 'Lato', sans-serif;
+}
+
+/* HELPER CLASSES -------------------------------------------------------------------------- */
+
+/* When Invoked, any block of content will be perfectly centered */
+
+.container-middle {
+    /* Initially doing 100% without 'VH' as a fallback for older browsers */
+    min-height: 100%;
+    /* Sets the viewport height to be 100% */
+    min-height: 100vh;
+    /* Do Flex */
+    display: flex;
+    /* Align Items Center */
+    align-items: center;
+    /* Align Content Center */
+    justify-content: center;
+}
+
+/* When Invoked, any HTML element related to text formatting will become dimmer than the original 'text-muted' */
+
+.text-muted-dark {
+    /* Resize & recolored to match figma mockup */
+    font-size: 170%;
+    color: #636363;
+}
+
+/* When Invoked, this class makes any button orange */
+
+.btn-orange {
+    background-color: #e5690b !important;
+    color: #ffffff !important;
+}
+
+/* When Invoked, this class will make any text darkblue */
+
+.btn-darkblue {
+    background-color: #145679 !important;
+    color: #ffffff !important;
+    width: 25%;
+    height: 40px;
+}
+
+/* When Invoked, any element with a complementing 'navbar-brand' will size perfectly */
+
+.brand-name {
+    font-size: 65% !important;
+}
+
+/* Bootstrap OVERRIDES -------------------------------------------------------------------------- */
+
+/*
+      Normally you wouldn't do this because it causes scaling issues, but these styles are ones that 
+      we WANT to change on scale because we are going for a specific look for this project.
+  */
+
+/* Override the small shadow class giving it a slightly different shadow hue */
+
+.shadow-sm {
+    box-shadow: 0 .425rem .25rem rgba(207, 44, 44, 0.075)!important;
+}
+
+.shadow-md {
+    box-shadow: 0 .425rem .50rem rgba(0, 0, 0, 0.075)!important;
+}
