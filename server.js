@@ -3,6 +3,29 @@ require("dotenv").config();
 var express = require("express");
 var exphbs = require("express-handlebars");
 var db = require("./models");
+var session = require("express-session");
+
+var passport = require("passport");
+var LocalStrategy = require("passport-local").Strategy;
+
+// LOGIN AUTHENTICATION Configuration
+passport.use(
+  new LocalStrategy(function(username, password, done) {
+    db.login.findOne({ username: username }, function(err, login) {
+      console.log(login);
+      if (err) {
+        return done(err);
+      }
+      if (!user) {
+        return done(null, false, { message: "Incorrect username." });
+      }
+      if (!user.validPassword(password)) {
+        return done(null, false, { message: "Incorrect password." });
+      }
+      return done(null, login);
+    });
+  })
+);
 
 // Define a new express instance.
 var app = express();
@@ -13,6 +36,9 @@ var PORT = process.env.PORT || 3000;
 // Middleware.
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(session({ secret: "mysecretkey" }));
+app.use(passport.initialize());
+app.use(passport.session());
 // Serve our 'public' static files.
 app.use(express.static("public"));
 
@@ -27,8 +53,8 @@ app.engine(
 app.set("view engine", "handlebars");
 
 // App Routing.
-require("./routes/apiRoutes")(app);
-require("./routes/htmlRoutes")(app);
+require("./routes/apiRoutes")(app, passport);
+require("./routes/htmlRoutes")(app, passport);
 
 var syncOptions = { force: false };
 

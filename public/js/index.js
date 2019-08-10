@@ -1,6 +1,6 @@
 // Get references to page elements
-var $exampleText = $("#example-text");
-var $exampleDescription = $("#example-description");
+// var $exampleText = $("#example-text");
+// var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
 
@@ -63,10 +63,10 @@ var refreshExamples = function() {
 // Save the new example to the db and refresh the list
 var handleFormSubmit = function(event) {
   event.preventDefault();
-  useremail = fEmail.value;
+  username = fEmail.value;
   password = fPassword.value;
 
-  console.log("event: " + useremail + " password: " + password);
+  console.log("event: " + username + " password: " + password);
 
   // var example = {
   //   text: $exampleText.val().trim(),
