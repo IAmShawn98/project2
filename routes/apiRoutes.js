@@ -4,7 +4,7 @@ var db = require("../models");
 // LocalStrategy = require("passport-local").Strategy;
 
 module.exports = function(app) {
-  // LOGIN PAGE
+  // LOAD LOGIN PAGE
   app.get("/", function(req, res) {
     db.login.findAll({}).then(function() {
       res.render("index");
@@ -39,27 +39,42 @@ module.exports = function(app) {
   //   })
   // );
 
-  // ADMIN PAGE
+  // LOAD ADMIN PAGE with employees & tiers info
   app.get("/admin", function(req, res) {
     db.employees.findAll({}).then(function() {
       res.render("admin");
     });
     // add tiers to this page also....not sure if this is correct
-    // db.tiers.findAll({}).then(function() {
-    //   res.render("admin");
-  });
-
-
-  app.post("/api/examples", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
+    db.tiers.findAll({}).then(function() {
+      res.render("admin");
     });
   });
 
-  // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.json(dbExample);
+  // TAKE IN NEW ACCOUNT INFO
+  app.post("/api/login", function(req, res) {
+    db.login.create(req.body).then(function(newUser) {
+      res.json(newUser);
+    });
+  });
+
+  // TAKE IN NEW TEAM MEMBER INFO
+  app.post("/api/admin", function(req, res) {
+    db.employees.create(req.body).then(function(newTeamMember){
+      res.json(newTeamMember);
+    });
+  });
+
+  // UPDATE TEAM MEMBER INFO ------this will probably need adjusted
+  app.put("/api/admin", function(req, res) {
+    db.employees.update(req.body).then(function(teamMember){
+      res.json(teamMember);
+    });
+  });
+
+  // UPDATE TIER HOURS ------this will probably need adjusted
+  app.put("/api/admin", function(req, res) {
+    db.tiers.update(req.body).then(function(tier){
+      res.json(tier);
     });
   });
 };
