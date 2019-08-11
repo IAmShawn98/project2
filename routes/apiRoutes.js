@@ -36,7 +36,7 @@ module.exports = function(app, passport) {
         res.status(401).json(err);
       });
   });
-
+  
   // LOAD ADMIN PAGE with employees & tiers info
   app.get("/admin", function(req, res) {
     db.employees.findAll({}).then(function() {
