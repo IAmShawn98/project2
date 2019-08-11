@@ -8,24 +8,51 @@ var session = require("express-session");
 var passport = require("passport");
 var LocalStrategy = require("passport-local").Strategy;
 
-// LOGIN AUTHENTICATION Configuration
+// LOGIN AUTHENTICATION Configuration -------------------------
 passport.use(
-  new LocalStrategy(function(username, password, done) {
-    db.login.findOne({ username: username }, function(err, login) {
-      console.log(login);
-      if (err) {
-        return done(err);
-      }
-      if (!user) {
-        return done(null, false, { message: "Incorrect username." });
-      }
-      if (!user.validPassword(password)) {
-        return done(null, false, { message: "Incorrect password." });
-      }
-      return done(null, login);
-    });
-  })
+  new LocalStrategy(
+    {
+      username: "fEmail"
+    },
+    function(username, password, done) {
+      db.login
+        .findOne({
+          where: {
+            username: username
+          }
+        })
+        .then(function(dbEmail) {
+          // If there's no user with the given email
+          if (!dbEmail) {
+            return done(null, false, {
+              message: "Incorrect email."
+            });
+          }
+          // If there is a user with the given email, but the password the user gives us is incorrect
+          else if (!dbEmail.validPassword(password)) {
+            return done(null, false, {
+              message: "Incorrect password."
+            });
+          }
+          // If none of the above, return the user
+          return done(null, dbEmail);
+        });
+    }
+  )
 );
+
+// In order to help keep authentication state across HTTP requests,
+// Sequelize needs to serialize and deserialize the user
+// Just consider this part boilerplate needed to make it all work
+passport.serializeUser(function(user, cb) {
+  cb(null, user);
+});
+
+passport.deserializeUser(function(obj, cb) {
+  cb(null, obj);
+});
+// ----------------------------------------------------
+
 
 // Define a new express instance.
 var app = express();
@@ -75,5 +102,6 @@ db.sequelize.sync(syncOptions).then(function() {
   });
 });
 
-// Export App.
+// Exports
 module.exports = app;
+module.exports = passport;

@@ -197,14 +197,14 @@
                                         </td>
 
                                         {{!-- Start Date --}}
-                                        <td><input type="date" class="form-control" name="fDate" id="fDate"></td>
+                                        <td><input type="date" class="form-control" name="fDate" id="startDate"></td>
 
                                         {{!-- End Date --}}
-                                        <td><input type="date" class="form-control" name="fDate" id="fDate"></td>
+                                        <td><input type="date" class="form-control" name="fDate" id="endDate"></td>
                                     </tr>
                                 </tbody>
                             </table>
-                            <button class="btn btn-darkblue float-right">Add PTO</button>
+                            <button class="btn btn-darkblue float-right" id="addPTO">Add PTO</button>
                         </div>
                     </div>
                 </div>
@@ -243,7 +243,7 @@
                     </tbody>
                 </table>
                 {{!-- Edit Link --}}
-                <span class="float-right ml-5"><a href="#Edit">Edit</a></span>
+                <span class="float-right ml-5" id="editTier"><a href="#Edit">Edit</a></span>
             </div>
         </div>
     </div>
