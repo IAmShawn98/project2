@@ -16,7 +16,7 @@ CREATE TABLE employees (
     updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP
     );
     
-CREATE TABLE login (
+CREATE TABLE logins (
 	id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     team_member VARCHAR (100) NOT NULL,
     username VARCHAR (100) NOT NULL,
