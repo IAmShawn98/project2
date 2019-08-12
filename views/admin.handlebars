@@ -28,13 +28,13 @@
 <div class="container-fluid mt-4">
     <div class="ml-5">
         {{!-- Site Info 'Team Info Table' Container --}}
-        <div class="container float-left">
+        <div class="container-fluid">
+            {{!-- Site Info 'Welcome the User' --}}
+            <h2 id="userWelcomeSize" class="display-4">Welcome, <i id="fUserName">Username</i></h2>
+            <h5 class="text-muted">Your Team Information</h5>
+        </div>
+        <div class="container float-left row-lg-12">
             {{!-- Site Info Welcome Container --}}
-            <div class="container-fluid">
-                {{!-- Site Info 'Welcome the User' --}}
-                <h2 id="userWelcomeSize" class="display-4">Welcome, <i id="fUserName">Username</i></h2>
-                <h5 class="text-muted">Your Team Information</h5>
-            </div>
             {{!-- Site Info 'Team Info Table' --}}
             <table class="table bg-white shadow-md">
                 {{!-- All of the HTML below is dummy data --}}
@@ -67,6 +67,25 @@
                 {{!-- Site Team Info 'Table Body' --}}
                 <tbody id="pTableBody">
                     {{!-- ✂ ---------------------------------------------------------------------  --}}
+                    <tr class="text-center"> 
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td>
+                            {{!-- Table Edit Action --}}
+                            <button class="btn btn-default">
+                                <i id="btnEdit" class="fa fa-pencil text-warning" aria-hidden="true"></i>
+                            </button>
+
+                            {{!-- Table Delete Action --}}
+                            <button class="btn btn-default">
+                                <i id="btnDelete" class="fa fa-trash text-danger" aria-hidden="true"></i>
+                            </button>
+                        </td>
+                    </tr>
                     <tr class="text-center">
                         <td>Billy Bob</td>
                         <td>Accounting Associate</td>
@@ -200,7 +219,7 @@
         {{!-- Site Info Table [END] --}}
 
         {{!-- Site Legend [START] --}}
-        <div id="legendCard" class="card">
+        <div id="legendCard" class="card row-lg-12">
             <div class="card-body">
                 <table class="table">
                     {{!-- Site 'Badge Legend' Table Head --}}
@@ -214,14 +233,14 @@
                     {{!-- Site 'Badge Legend' Table Body --}}
                     <tbody>
                         {{!-- All Badge Levels --}}
-                        <td>
-                            <span class="badge shadow-md level- blue">Blue</span>
-                            <span class="badge shadow-md level- orange mt-1">Orange</span>
-                            <span class="badge shadow-md level- green mt-1">Green</span>
-                            <span class="badge shadow-md level- purple mt-1">Purple</span>
+                        <td class="col-sm-6">
+                            <span class="badge shadow-md level-blue">Blue</span>
+                            <span class="badge shadow-md level-orange mt-1">Orange</span>
+                            <span class="badge shadow-md level-green mt-1">Green</span>
+                            <span class="badge shadow-md level-purple mt-1">Purple</span>
                         </td>
                         {{!-- All Badge Hours --}}
-                        <td>
+                        <td class="col-sm-6">
                             <span class="badge level- transparent text-dark">80</span>
                             <span class="badge level- transparent text-dark mt-2">80</span>
                             <span class="badge level- transparent text-dark mt-2">120</span>
