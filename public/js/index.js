@@ -1,99 +1,132 @@
-// Get references to page elements
-var $exampleText = $("#example-text");
-var $exampleDescription = $("#example-description");
-var $submitBtn = $("#submit");
-var $exampleList = $("#example-list");
+$(document).ready(function() {
 
-// The API object contains methods for each kind of request we'll make
-var API = {
-  saveExample: function(example) {
-    return $.ajax({
-      headers: {
-        "Content-Type": "application/json"
-      },
-      type: "POST",
-      url: "api/examples",
-      data: JSON.stringify(example)
-    });
-  },
-  getExamples: function() {
-    return $.ajax({
-      url: "api/examples",
-      type: "GET"
-    });
-  },
-  deleteExample: function(id) {
-    return $.ajax({
-      url: "api/examples/" + id,
-      type: "DELETE"
-    });
-  }
-};
+  // BUTTON HANDLING ---------------------------------------
 
-// refreshExamples gets new examples from the db and repopulates the list
-var refreshExamples = function() {
-  API.getExamples().then(function(data) {
-    var $examples = data.map(function(example) {
-      var $a = $("<a>")
-        .text(example.text)
-        .attr("href", "/example/" + example.id);
-
-      var $li = $("<li>")
-        .attr({
-          class: "list-group-item",
-          "data-id": example.id
-        })
-        .append($a);
-
-      var $button = $("<button>")
-        .addClass("btn btn-danger float-right delete")
-        .text("ｘ");
-
-      $li.append($button);
-
-      return $li;
-    });
-
-    $exampleList.empty();
-    $exampleList.append($examples);
+  // NEW ACCOUNT button handling--------------
+  $("#newAccount").on("click", function() {
+    // take in the values from the input fields
+    var username = $("#fEmail").val().trim();
+    var password = $("#fPassword").val().trim();
+    // If we have an email and password we run the loginUser function and clear the form
+    loginUser(username, password);
+    $("#fEmail").val("");
+    $("#fPassword").val("");
+    // alert "new account added" (add a place for this in handlebars)
+    $("#alert").text("New account added.");
   });
-};
 
-// handleFormSubmit is called whenever we submit a new example
-// Save the new example to the db and refresh the list
-var handleFormSubmit = function(event) {
-  event.preventDefault();
+  // LOGIN button handling--------------
+  $("#login").on("submit", function() {
+    // take in the values from the input fields
+    var username = $("#fEmail").val().trim();
+    var password = $("#fPassword").val().trim();
 
-  var example = {
-    text: $exampleText.val().trim(),
-    description: $exampleDescription.val().trim()
-  };
+    loginUser(username, password);
+    $("#fEmail").val("");
+    $("#fPassword").val("");
+  });
 
-  if (!(example.text && example.description)) {
-    alert("You must enter an example text and description!");
-    return;
+  // loginUser does a post to our "api/login" route and if successful, redirects us the the admin page - this function works for both new account and login.
+  function loginUser(username, password) {
+    $.post("/api/logins", {
+      username: username,
+      password: password
+    })
+      .then(function() {
+        console.log("post request");
+        window.location.replace("/admin");
+        // If there's an error, log the error
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
   }
 
-  API.saveExample(example).then(function() {
-    refreshExamples();
+  // ADD TEAM MEMBER button handling--------------
+  $("#addTeamMember").on("click", function() {
+    //take in new info & add to employees table of db
+    var team_member = $("#team_member").val().trim();
+    var title = $("#title").val().trim();
+    var tier_level = $("#tier_level").val().trim();
+    var hours_remaining = $("#hours_remaining").val().trim();
+    var start_date = $("#start_date").val().trim();
+
+    addTeamMember(team_member, title, tier_level, hours_remaining, start_date);
   });
 
-  $exampleText.val("");
-  $exampleDescription.val("");
-};
+  function addTeamMember(team_member, title, tier_level, hours_remaining, start_date) {
+    $.post("/api/admin", {
+      team_member: team_member,
+      title: title,
+      tier_level: tier_level,
+      hours_remaining: hours_remaining,
+      start_date: start_date
+    })
+      .then(function() {
+        window.location.replace("/admin");
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
+  }
 
-// handleDeleteBtnClick is called when an example's delete button is clicked
-// Remove the example from the db and refresh the list
-var handleDeleteBtnClick = function() {
-  var idToDelete = $(this)
-    .parent()
-    .attr("data-id");
+  // EDIT TEAM MEMBER INFO button handling--------------
+  $(document).on("click", "btnEdit", handleMemberEdit);
 
-  API.deleteExample(idToDelete).then(function() {
-    refreshExamples();
+  // get info based on id of member  ---- not sure if this is correct yet
+  function handleMemberEdit() {
+    var currentMember = $(this)
+      .parent()
+      .parent()
+      .data("post");
+    window.location.href = "/admin?id=" + currentMember.id;
+  }
+
+  // DELETE TEAM MEMBER button handling--------------
+  $(document).on("click", "btnDelete", handleMemberDelete);
+
+  function handleMemberDelete(event) {
+    event.stopPropagation();
+    var id = $(this).data("id");
+    $.ajax({
+      method: "DELETE",
+      url: "/api/admin/" + id
+    })
+      .then(function() {
+        window.location.replace("/admin");
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
+  }
+
+  // add pto submit button handling--------------
+  $("#addPTO").on("click", function() {
+    // calculate hours and add to hours used and take away from hours remaining
+    $("#fNewMember").val().trim();
+    var startDate = $("#startDate").val();
+    var endDate = $("#endDate").val();
+    // how to get # of hours from dates inputted? (Each date = 8 hrs)
+    var hoursRequested = (endDate - startDate) * 8;
+    var hoursRemaining;
+    var hoursUsed;
+    // if hours used is less than hours remaining, give error message
+    if (hoursRequested <= hoursRemaining) {
+      hoursRemaining - hoursRequested;
+      hoursUsed + hoursRequested;
+    } else {
+      $("#ptoAlert").text("You do not have enough PTO hours for this request.")
+    }
   });
-};
 
-// Add event listeners to the submit and delete buttons
-$submitBtn.on("click", handleFormSubmit);
-$exampleList.on("click", ".delete", handleDeleteBtnClick);
+  // edit tiers button handling--------------
+  $("#editTier").on("click", function() {
+    $.ajax({
+      method: "PUT",
+      url: "/api/admin",
+      data: hours
+    }).then(function() {
+      window.location.href = "/admin";
+    });
+  });
+});

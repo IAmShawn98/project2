@@ -10,8 +10,8 @@
     <div id="cardLoginLength" class="card shadow-sm p-3 offset-3 bg-white rounded">
       {{!-- Site 'Login Form' Card Body --}}
       <div class="card-body p-0 m-0">
-        {{!-- Site 'Login Form' Form Content --}}
-        <form>
+        {{!-- Site 'Login Form' Form Content -------------------------}}
+        <form id="login">
           {{!-- Site 'Login Form' group 'Email Address Field' --}}
           <div class="form-group input-group">
             {{!-- Site 'Login Form' prepended 'Email Fa Icon' --}}
@@ -29,6 +29,17 @@
             </div>
             {{!-- Site 'Login Form' 'Password Input Field' --}}
             <input type="text" class="form-control" name="fPassword" id="fPassword" placeholder="***************">
+          </div>
+          {{!-- Create Account Link + LogIn Button --}}
+          <div class="row text-center">
+            <div class="col-md-6">
+              {{!-- Create New Account --}}
+              <button type="button" class="btn btn-none text-primary" id="newAccount">Create New Account</button>
+            </div>
+            <div class="col-md">
+              {{!-- Create New Account --}}
+              <button type="submit" id="login" class="btn btn-orange col-md-7">Log In</a>
+            </div>
           </div>
         </form>
       </div>
@@ -62,4 +73,4 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 {{!-- CRUD Form Operations ---> 'NOT YET SETUP' --}}
-<script src="../public/js/index.js"></script>
+<script src="../js/index.js"></script>

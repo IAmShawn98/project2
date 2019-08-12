@@ -1,13 +1,17 @@
 module.exports = function(sequelize, DataTypes) {
-  var login = sequelize.define("login", {
+  var logins = sequelize.define("logins", {
     team_member: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    login: {
+    username: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    password: {
       type: DataTypes.STRING,
       allowNull: false
     }
   });
-  return login;
+  return logins;
 };
