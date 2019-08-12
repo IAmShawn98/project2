@@ -4,7 +4,9 @@ module.exports = function(app, passport) {
   // LOAD LOGIN PAGE
   app.get("/", function(req, res) {
     db.logins.findAll({}).then(function(response) {
-      console.log("response: " + response);
+      for (var i = 0; i < response.length; i++) {
+        console.log("response: " + JSON.stringify(response[i].username));
+      }
       // res.json(response);
       res.render("index");
     });

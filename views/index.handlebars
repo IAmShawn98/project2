@@ -28,7 +28,7 @@
               <div class="input-group-text bg-dark text-white"><i class="fa fa-key" aria-hidden="true"></i></div>
             </div>
             {{!-- Site 'Login Form' 'Password Input Field' --}}
-            <input type="text" class="form-control" name="password" id="password" placeholder="***************">
+            <input type="password" autocomplete="off" class="form-control" name="password" id="password" placeholder="***************">
           </div>
         </form>
       </div>
@@ -40,7 +40,7 @@
         </div>
         <div class="col-md">
           {{!-- Login --}}
-          <button class="btn btn-orange col-md-7" href="/admin" id="login" type="submit">Log In</button>
+          <input class="btn btn-orange col-md-7" href="/admin" id="login" type="submit" value="Log In" />
         </div>
       </div>
     </div>
@@ -62,4 +62,4 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 {{!-- CRUD Form Operations ---> 'NOT YET SETUP' --}}
-<script src="../js/index.js"></script>
+<script type="text/javascript" src="../js/index.js"></script>
