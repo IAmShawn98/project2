@@ -143,27 +143,14 @@
                             </button>
                         </td>
                     </tr>
-                    <tr class="text-center">
-                        <td>Jack Dorsey</td>
-                        <td>Programming Manager</td>
-                        <td><span class="badge shadow-md level- green">Green</span></td>
-                        <td>0</td>
-                        <td>120</td>
-                        <td>5/5/2012</td>
-                        <td>
-                            {{!-- Table Edit Action --}}
-                            <button class="btn btn-default">
-                                <i id="btnEdit" class="fa fa-pencil text-warning" aria-hidden="true"></i>
-                            </button>
-
-                            {{!-- Table Delete Action --}}
-                            <button class="btn btn-default">
-                                <i id="btnDelete" class="fa fa-trash text-danger" aria-hidden="true"></i>
-                            </button>
-                        </td>
-                    </tr>
                     {{! -- ✂ ---------------------------------------------------------------------  --}}
                 </tbody>
+                {{!-- Table 'Add New Team Member' --}}
+                <tr>
+                    <td id="addMemberLink" class="text-center">
+                        <button class="btn btn-link" href="#">+ Add Team Member</button>
+                    </td>
+                </tr>
             </table>
             {{!-- Site Add PTO --}}
             <div class="row container ml-1 mb-5">

@@ -51,7 +51,12 @@ module.exports = function(app, passport) {
     });
   });
 
-  // TAKE IN NEW TEAM MEMBER INFO
+  // CREATE ACCOUNT PAGE
+  app.get("/create", function(req, res) {
+    db.employees.findAll({}).then(function() {
+      res.render("create");
+
+      // TAKE IN NEW TEAM MEMBER INFO
   app.post("/api/newMember", function(req, res) {
     db.employees.create({
       team_member: req.body.team_member,

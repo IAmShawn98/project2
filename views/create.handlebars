@@ -1,57 +1,54 @@
-{{!-- Site Login Container [Start] --}}
+{{!-- Site Create Account Container [Start] --}}
 <div class="container text-center container-middle">
-  {{!-- Site Login 'App Name' Col --}}
+  {{!-- Site Create Account 'App Name' Col --}}
   <div class="col-md-12">
-    {{!-- Site Login 'App Name' --}}
+    {{!-- Site Create Account 'App Name' --}}
     <h1 class="display-5 ml-3">Get It <strong class="text-danger">Together.</strong></h1>
     {{!-- Site 'App Name' Description --}}
-    <label class="text-center text-muted-dark">Managing Your Team's PTO</label>
-    {{!-- Site 'Login Form' --}}
+    <label class="text-center text-muted-dark">Create Your Account.</label>
+    {{!-- Site 'Create Account Form' --}}
     <div id="cardLoginLength" class="card shadow-sm p-3 offset-3 bg-white rounded">
-      {{!-- Site 'Login Form' Card Body --}}
+      {{!-- Site 'Create Account Form' Card Body --}}
       <div class="card-body p-0 m-0">
-        {{!-- Site 'Login Form' Form Content -------------------------}}
-        <form id="login">
-          {{!-- Site 'Login Form' group 'Email Address Field' --}}
+        {{!-- Site 'Create Account Form' Form Content --}}
+        <form>
+          {{!-- Site 'Create Account Form' group 'New Member Address Field' --}}
           <div class="form-group input-group">
-            {{!-- Site 'Login Form' prepended 'Email Fa Icon' --}}
+            {{!-- Site 'Create Account Form' prepended 'Person Fa Icon' --}}
+            <div class="input-group-prepend">
+              <div class="input-group-text bg-dark text-white"><i class="fa fa-user" aria-hidden="true"></i></div>
+            </div>
+            {{!-- Site 'Create Account Form' 'New Member Input Field' --}}
+            <input type="text" class="form-control" name="fNewMember" id="fNewMember" placeholder="bob McBobface">
+          </div>
+          <div class="form-group input-group">
+            {{!-- Site 'Create Account Form' prepended 'Email Fa Icon' --}}
             <div class="input-group-prepend">
               <div class="input-group-text bg-dark text-white"><i class="fa fa-envelope" aria-hidden="true"></i></div>
             </div>
-            {{!-- Site 'Login Form' 'Email Input Field' --}}
+            {{!-- Site 'Create Account Form' 'Email Input Field' --}}
             <input type="text" class="form-control" name="fEmail" id="fEmail" placeholder="bob@bob.com">
           </div>
-          {{!-- Site 'Login Form' group 'Password Field' --}}
+          {{!-- Site 'Create Account Form' group 'Password Field' --}}
           <div class="form-group input-group">
-            {{!-- Site 'Login Form' prepended 'Password Fa Icon' --}}
+            {{!-- Site 'Create Account Form' prepended 'Password Fa Icon' --}}
             <div class="input-group-prepend">
               <div class="input-group-text bg-dark text-white"><i class="fa fa-key" aria-hidden="true"></i></div>
             </div>
-            {{!-- Site 'Login Form' 'Password Input Field' --}}
+            {{!-- Site 'Create Account Form' 'Password Input Field' --}}
             <input type="text" class="form-control" name="fPassword" id="fPassword" placeholder="***************">
-          </div>
-          {{!-- Create Account Link + LogIn Button --}}
-          <div class="row text-center">
-            <div class="col-md-6">
-              {{!-- Create New Account --}}
-              <button type="button" class="btn btn-none text-primary" id="newAccount">Create New Account</button>
-            </div>
-            <div class="col-md">
-              {{!-- Create New Account --}}
-              <button type="submit" id="login" class="btn btn-orange col-md-7">Log In</a>
-            </div>
           </div>
         </form>
       </div>
-      {{!-- Create Account Button + Login Route --}}
+      {{!-- Create Account Link + LogIn Button --}}
       <div class="row text-center">
         <div class="col-md-6">
           {{!-- Create New Account --}}
-          <a class="btn btn-none text-primary" href="/create">Create New Account</a>
+          <p class="lead">Have an account? <a href="/">Login</a></p>
         </div>
         <div class="col-md">
           {{!-- Create New Account --}}
-          <button class="btn btn-orange col-md-7" href="#">Log In</a>
+          <button class="btn btn-orange col-md-7" href="#">Create Account</a>
         </div>
       </div>
     </div>
@@ -67,10 +64,10 @@
     </div>
   </div>
 </div>
-{{!-- / Site App Login Container [End] --}}
+{{!-- / Site App Create Account Container [End] --}}
 
 {{!-- jQuery CDN --}}
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 {{!-- CRUD Form Operations ---> 'NOT YET SETUP' --}}
-<script src="../js/index.js"></script>
+<script src="../public/js/index.js"></script>

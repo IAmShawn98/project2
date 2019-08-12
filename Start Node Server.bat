@@ -33,6 +33,7 @@ if %option% == 2 goto serverMon
 :: source code.
 :serverMon
 echo Starting NodeMon Server Session....
+start http://localhost:3000/
 cls
 nodemon server.js
 pause
@@ -41,6 +42,7 @@ goto selectMenu
 :: This option starts the server using the built-in Node function.
 :serverRegular
 echo Starting Regular Node Server Session....
+start http://localhost:3000/
 cls
 node server.js
 pause

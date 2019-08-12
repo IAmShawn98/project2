@@ -15,6 +15,11 @@
     width: 15rem;
 }
 
+#addMemberLink {
+    padding: 0;
+    border: none;
+}
+
 /* Tier Badgets ------------------- */
 
 /* Badge Base */
