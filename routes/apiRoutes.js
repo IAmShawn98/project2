@@ -49,6 +49,12 @@ module.exports = function(app) {
     //   res.render("admin");
   });
 
+  // CREATE ACCOUNT PAGE
+  app.get("/create", function(req, res) {
+    db.employees.findAll({}).then(function() {
+      res.render("create");
+    });
+  });
 
   app.post("/api/examples", function(req, res) {
     db.Example.create(req.body).then(function(dbExample) {
