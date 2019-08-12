@@ -16,11 +16,10 @@ $(document).ready(function() {
   });
 
   // LOGIN button handling--------------
-  $("#login").on("click", function() {
+  $("#login").on("submit", function() {
     // take in the values from the input fields
     var username = $("#fEmail").val().trim();
     var password = $("#fPassword").val().trim();
-    // run through passport for authentication (does this need called?)
 
     loginUser(username, password);
     $("#fEmail").val("");
@@ -28,12 +27,13 @@ $(document).ready(function() {
   });
 
   // loginUser does a post to our "api/login" route and if successful, redirects us the the admin page - this function works for both new account and login.
-  function loginUser(email, password) {
-    $.post("/api/login", {
-      email: email,
+  function loginUser(username, password) {
+    $.post("/api/logins", {
+      username: username,
       password: password
     })
       .then(function() {
+        console.log("post request");
         window.location.replace("/admin");
         // If there's an error, log the error
       })
@@ -42,25 +42,63 @@ $(document).ready(function() {
       });
   }
 
-
-// TO DO --------------------------------------
-  // add team member button handling--------------
-    //this button needs added to handlebars
+  // ADD TEAM MEMBER button handling--------------
   $("#addTeamMember").on("click", function() {
-    // have form appear? a new handlebar?
     //take in new info & add to employees table of db
+    var team_member = $("#team_member").val().trim();
+    var title = $("#title").val().trim();
+    var tier_level = $("#tier_level").val().trim();
+    var hours_remaining = $("#hours_remaining").val().trim();
+    var start_date = $("#start_date").val().trim();
+
+    addTeamMember(team_member, title, tier_level, hours_remaining, start_date);
   });
 
-  // edit team member info button handling--------------
-  $("#btnEdit").on("click", function() {
-    // get info based on id of member
-    // update info then save to db (put/update in api)
-  });
+  function addTeamMember(team_member, title, tier_level, hours_remaining, start_date) {
+    $.post("/api/admin", {
+      team_member: team_member,
+      title: title,
+      tier_level: tier_level,
+      hours_remaining: hours_remaining,
+      start_date: start_date
+    })
+      .then(function() {
+        window.location.replace("/admin");
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
+  }
 
-  // delete team member button handling--------------
-  $("#btnDelete").on("click", function() {
-    // delete team member from database (api/destroy)
-  });
+  // EDIT TEAM MEMBER INFO button handling--------------
+  $(document).on("click", "btnEdit", handleMemberEdit);
+
+  // get info based on id of member  ---- not sure if this is correct yet
+  function handleMemberEdit() {
+    var currentMember = $(this)
+      .parent()
+      .parent()
+      .data("post");
+    window.location.href = "/admin?id=" + currentMember.id;
+  }
+
+  // DELETE TEAM MEMBER button handling--------------
+  $(document).on("click", "btnDelete", handleMemberDelete);
+
+  function handleMemberDelete(event) {
+    event.stopPropagation();
+    var id = $(this).data("id");
+    $.ajax({
+      method: "DELETE",
+      url: "/api/admin/" + id
+    })
+      .then(function() {
+        window.location.replace("/admin");
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
+  }
 
   // add pto submit button handling--------------
   $("#addPTO").on("click", function() {
@@ -83,118 +121,12 @@ $(document).ready(function() {
 
   // edit tiers button handling--------------
   $("#editTier").on("click", function() {
-
+    $.ajax({
+      method: "PUT",
+      url: "/api/admin",
+      data: hours
+    }).then(function() {
+      window.location.href = "/admin";
+    });
   });
 });
-
-
-
-
-
-
-
-
-// other example stuff currently not using v-------------------------v
-// Get references to page elements
-// var $exampleText = $("#example-text");
-// var $exampleDescription = $("#example-description");
-var $submitBtn = $("#submit");
-var $exampleList = $("#example-list");
-
-// The API object contains methods for each kind of request we'll make
-var API = {
-  saveExample: function(example) {
-    return $.ajax({
-      headers: {
-        "Content-Type": "application/json"
-      },
-      type: "POST",
-      url: "api/examples",
-      data: JSON.stringify(example)
-    });
-  },
-  getExamples: function() {
-    return $.ajax({
-      url: "api/examples",
-      type: "GET"
-    });
-  },
-  deleteExample: function(id) {
-    return $.ajax({
-      url: "api/examples/" + id,
-      type: "DELETE"
-    });
-  }
-};
-
-// refreshExamples gets new examples from the db and repopulates the list
-var refreshExamples = function() {
-  API.getExamples().then(function(data) {
-    var $examples = data.map(function(example) {
-      var $a = $("<a>")
-        .text(example.text)
-        .attr("href", "/example/" + example.id);
-
-      var $li = $("<li>")
-        .attr({
-          class: "list-group-item",
-          "data-id": example.id
-        })
-        .append($a);
-
-      var $button = $("<button>")
-        .addClass("btn btn-danger float-right delete")
-        .text("ｘ");
-
-      $li.append($button);
-
-      return $li;
-    });
-
-    $exampleList.empty();
-    $exampleList.append($examples);
-  });
-};
-
-// handleFormSubmit is called whenever we submit a new example
-// Save the new example to the db and refresh the list
-var handleFormSubmit = function(event) {
-  event.preventDefault();
-  username = fEmail.value;
-  password = fPassword.value;
-
-  console.log("event: " + username + " password: " + password);
-
-  // var example = {
-  //   text: $exampleText.val().trim(),
-  //   description: $exampleDescription.val().trim()
-  // };
-
-  // if (!(example.text && example.description)) {
-  //   alert("You must enter an example text and description!");
-  //   return;
-  // }
-
-  // API.saveExample(example).then(function() {
-  //   refreshExamples();
-  // });
-
-  // $exampleText.val("");
-  // $exampleDescription.val("");
-};
-
-// handleDeleteBtnClick is called when an example's delete button is clicked
-// Remove the example from the db and refresh the list
-var handleDeleteBtnClick = function() {
-  var idToDelete = $(this)
-    .parent()
-    .attr("data-id");
-
-  API.deleteExample(idToDelete).then(function() {
-    refreshExamples();
-  });
-};
-
-// Add event listeners to the submit and delete buttons
-$submitBtn.on("click", handleFormSubmit);
-$exampleList.on("click", ".delete", handleDeleteBtnClick);
