@@ -11,7 +11,7 @@
       {{!-- Site 'Login Form' Card Body --}}
       <div class="card-body p-0 m-0">
         {{!-- Site 'Login Form' Form Content -------------------------}}
-        <form id="login">
+        <form id="loginForm">
           {{!-- Site 'Login Form' group 'Email Address Field' --}}
           <div class="form-group input-group">
             {{!-- Site 'Login Form' prepended 'Email Fa Icon' --}}
@@ -19,7 +19,7 @@
               <div class="input-group-text bg-dark text-white"><i class="fa fa-envelope" aria-hidden="true"></i></div>
             </div>
             {{!-- Site 'Login Form' 'Email Input Field' --}}
-            <input type="text" class="form-control" name="fEmail" id="fEmail" placeholder="bob@bob.com">
+            <input type="text" class="form-control" name="username" id="username" placeholder="bob@bob.com">
           </div>
           {{!-- Site 'Login Form' group 'Password Field' --}}
           <div class="form-group input-group">
@@ -28,7 +28,7 @@
               <div class="input-group-text bg-dark text-white"><i class="fa fa-key" aria-hidden="true"></i></div>
             </div>
             {{!-- Site 'Login Form' 'Password Input Field' --}}
-            <input type="text" class="form-control" name="fPassword" id="fPassword" placeholder="***************">
+            <input type="text" class="form-control" name="password" id="password" placeholder="***************">
           </div>
         </form>
       </div>
@@ -39,8 +39,8 @@
           <a class="btn btn-none text-primary" href="/create">Create New Account</a>
         </div>
         <div class="col-md">
-          {{!-- Create New Account --}}
-          <button class="btn btn-orange col-md-7" href="#">Log In</a>
+          {{!-- Login --}}
+          <button class="btn btn-orange col-md-7" href="/admin" id="login" type="submit">Log In</button>
         </div>
       </div>
     </div>
