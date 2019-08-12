@@ -27,7 +27,7 @@
               <div class="input-group-text bg-dark text-white"><i class="fa fa-envelope" aria-hidden="true"></i></div>
             </div>
             {{!-- Site 'Create Account Form' 'Email Input Field' --}}
-            <input type="text" class="form-control" name="fEmail" id="fEmail" placeholder="bob@bob.com">
+            <input type="text" class="form-control" name="username" id="username" placeholder="bob@bob.com">
           </div>
           {{!-- Site 'Create Account Form' group 'Password Field' --}}
           <div class="form-group input-group">
@@ -36,7 +36,7 @@
               <div class="input-group-text bg-dark text-white"><i class="fa fa-key" aria-hidden="true"></i></div>
             </div>
             {{!-- Site 'Create Account Form' 'Password Input Field' --}}
-            <input type="text" class="form-control" name="fPassword" id="fPassword" placeholder="***************">
+            <input type="text" class="form-control" name="password" id="password" placeholder="***************">
           </div>
         </form>
       </div>
@@ -48,8 +48,9 @@
         </div>
         <div class="col-md">
           {{!-- Create New Account --}}
-          <button class="btn btn-orange col-md-7" href="#">Create Account</a>
+          <button class="btn btn-orange col-md-7" href="/login" id="newAccount" type="submit">Create Account</a>
         </div>
+        <p id="alert"</p>
       </div>
     </div>
     {{!-- Site 'Footer' Copyright --}}

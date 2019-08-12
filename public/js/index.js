@@ -3,27 +3,29 @@ $(document).ready(function() {
   // BUTTON HANDLING ---------------------------------------
 
   // NEW ACCOUNT button handling--------------
-  $("#newAccount").on("click", function() {
+  $("#newAccount").on("submit", function() {
+    console.log("newAccoun button pressed")
     // take in the values from the input fields
-    var username = $("#fEmail").val().trim();
-    var password = $("#fPassword").val().trim();
+    var username = $("#username").val().trim();
+    var password = $("#password").val().trim();
     // If we have an email and password we run the loginUser function and clear the form
     loginUser(username, password);
-    $("#fEmail").val("");
-    $("#fPassword").val("");
+    $("#username").val("");
+    $("#password").val("");
     // alert "new account added" (add a place for this in handlebars)
     $("#alert").text("New account added.");
   });
 
   // LOGIN button handling--------------
   $("#login").on("submit", function() {
+    console.log("login button pressed")
     // take in the values from the input fields
-    var username = $("#fEmail").val().trim();
-    var password = $("#fPassword").val().trim();
+    var username = $("#username").val().trim();
+    var password = $("#password").val().trim();
 
     loginUser(username, password);
-    $("#fEmail").val("");
-    $("#fPassword").val("");
+    $("#username").val("");
+    $("#password").val("");
   });
 
   // loginUser does a post to our "api/login" route and if successful, redirects us the the admin page - this function works for both new account and login.
