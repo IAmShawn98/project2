@@ -4,6 +4,7 @@ var express = require("express");
 var exphbs = require("express-handlebars");
 var db = require("./models");
 var session = require("express-session");
+var flash = require("connect-flash");
 
 var passport = require("passport");
 var LocalStrategy = require("passport-local").Strategy;
@@ -12,30 +13,30 @@ var LocalStrategy = require("passport-local").Strategy;
 passport.use(
   new LocalStrategy(
     {
-      username: "fEmail"
+      username: "fEmail",
     },
     function(username, password, done) {
-      db.login
+      db.logins
         .findOne({
           where: {
             username: username
           }
         })
-        .then(function(dbEmail) {
+        .then(function(username) {
           // If there's no user with the given email
-          if (!dbEmail) {
+          if (!username) {
             return done(null, false, {
               message: "Incorrect email."
             });
           }
           // If there is a user with the given email, but the password the user gives us is incorrect
-          else if (!dbEmail.validPassword(password)) {
+          else if (!username.validPassword(password)) {
             return done(null, false, {
               message: "Incorrect password."
             });
           }
           // If none of the above, return the user
-          return done(null, dbEmail);
+          return done(null, username);
         });
     }
   )
@@ -67,6 +68,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 // Serve our 'public' static files.
 app.use(express.static("public"));
+app.use(flash());
 
 // Handlebars View Engine.
 app.engine(
