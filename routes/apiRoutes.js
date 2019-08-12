@@ -55,6 +55,8 @@ module.exports = function(app, passport) {
   app.get("/create", function(req, res) {
     db.employees.findAll({}).then(function() {
       res.render("create");
+    });
+  });
 
       // TAKE IN NEW TEAM MEMBER INFO
   app.post("/api/newMember", function(req, res) {
