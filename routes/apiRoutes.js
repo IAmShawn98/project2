@@ -25,30 +25,35 @@ module.exports = function(app, passport) {
     }
   );
 
-  // TAKE IN NEW ACCOUNT INFO
-  app.post("/api/logins", function(req, res) {
-    db.logins.create({
-      team_member: req.body.team_member,
-      username: req.body.username,
-      password: req.body.password
-    })
-      .then(function() {
-        console.log ("Req" + req);
-        console.log("res" + res);
-        res.redirect(307, "/api/logins");
-      })
-      .catch(function(err) {
-        res.status(401).json(err);
-      });
-  });
+  
+
+  // TAKE IN NEW ACCOUNT INFO (Duplicate?)
+  // app.post("/api/logins", function(req, res) {
+  //   db.logins.create({
+  //     team_member: req.body.team_member,
+  //     username: req.body.username,
+  //     password: req.body.password
+  //   })
+  //     .then(function() {
+  //       console.log ("Req" + req);
+  //       console.log("res" + res);
+  //       res.redirect(307, "/api/logins");
+  //     })
+  //     .catch(function(err) {
+  //       res.status(401).json(err);
+  //     });
+  // });
   
   // LOAD ADMIN PAGE with employees & tiers info
   app.get("/admin", function(req, res) {
-    db.employees.findAll({}).then(function() {
+    db.employees.findAll({}).then(function(result) {
       db.tiers.findAll({}).then(function() {
         // PH
       });
-      res.render("admin");
+      res.render("admin", {employees: result});
+      console.log(result);
+
+      // res.json(response);
     });
   });
 
@@ -123,6 +128,19 @@ module.exports = function(app, passport) {
   // ADD PTO
   app.put("api/admin/:team_member", function(req, res) {
     db.employees.update(req.body).then(function(teamMember) {
+      if (ptoRequested === teamMember) {
+        if (hoursRequested <= hoursRemaining) {
+          hoursRemaining - hoursRequested;
+          hoursUsed + hoursRequested;
+  
+          // Submit Success.
+          alert("You are a winner!");
+  
+        } else {
+          // Submit Error.
+          alert("You are a failure!");
+        }
+      }
       res.json(teamMember);
     });
   });

@@ -66,98 +66,16 @@
                 </thead>
                 {{!-- Site Team Info 'Table Body' --}}
                 <tbody id="pTableBody">
-                    {{!-- ✂ ---------------------------------------------------------------------  --}}
-                    <tr class="text-center"> 
-                        <td id="team_member"> </td>
-                        <td id="title"> </td>
-                        <td><span id="tier-level" class="badge shadow-md"></span></td>
-                        <td id="hours_remaining"> </td>
-                        <td id="start_date"> </td>
-                        <td>
-                            {{!-- Table Edit Action --}}
-                            <button class="btn btn-default">
-                                <i id="btnEdit" class="fa fa-pencil text-warning" aria-hidden="true"></i>
-                            </button>
-                            
-                    </tr>
-
                     <tr class="text-center">
-                        <td>Billy Bob</td>
-                        <td>Accounting Associate</td>
-                        <td><span class="badge shadow-md level- blue">Blue</span></td>
-                        <td>22</td>
-                        <td>58</td>
-                        <td>5/5/2018</td>
+                        <td>{{this.team_member}}</td>
+                        <td>{{this.title}}</td>
+                        <td><span class="badge shadow-md level- blue">{{this.tier_level}}</span></td>
+                        <td>{{this.hours_used}}</td>
+                        <td>{{this.hours_remaining}}</td>
+                        <td>{{this.start_date}}</td>
                         <td>
-                            {{!-- Table Edit Action --}}
-                            <button class="btn btn-default">
-                                <i id="btnEdit" class="fa fa-pencil text-warning" aria-hidden="true"></i>
-                            </button>
-
-                            {{!-- Table Delete Action --}}
-                            <button class="btn btn-default">
-                                <i id="btnDelete" class="fa fa-trash text-danger" aria-hidden="true"></i>
-                            </button>
-                        </td>
                     </tr>
-                    <tr class="text-center">
-                        <td>Lilly Bob</td>
-                        <td>Accounting Manager</td>
-                        <td><span class="badge shadow-md level- green">Green</span></td>
-                        <td>0</td>
-                        <td>120</td>
-                        <td>5/5/2012</td>
-                        <td>
-                            {{!-- Table Edit Action --}}
-                            <button class="btn btn-default">
-                                <i id="btnEdit" class="fa fa-pencil text-warning" aria-hidden="true"></i>
-                            </button>
-
-                            {{!-- Table Delete Action --}}
-                            <button class="btn btn-default">
-                                <i id="btnDelete" class="fa fa-trash text-danger" aria-hidden="true"></i>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr class="text-center">
-                        <td>Philly Bob</td>
-                        <td>Senior Executive CEO Part...</td>
-                        <td><span class="badge shadow-md level- purple">Purple</span></td>
-                        <td>0</td>
-                        <td>200</td>
-                        <td>12/12/1998</td>
-                        <td>
-                            {{!-- Table Edit Action --}}
-                            <button class="btn btn-default">
-                                <i id="btnEdit" class="fa fa-pencil text-warning" aria-hidden="true"></i>
-                            </button>
-
-                            {{!-- Table Delete Action --}}
-                            <button class="btn btn-default">
-                                <i id="btnDelete" class="fa fa-trash text-danger" aria-hidden="true"></i>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr class="text-center">
-                        <td>Millie Bob</td>
-                        <td>Programming Associate</td>
-                        <td><span class="badge shadow-md level- blue">Blue</span></td>
-                        <td>0</td>
-                        <td>58</td>
-                        <td>5/5/2018</td>
-                        <td>
-                            {{!-- Table Edit Action --}}
-                            <button class="btn btn-default">
-                                <i id="btnEdit" class="fa fa-pencil text-warning" aria-hidden="true"></i>
-                            </button>
-
-                            {{!-- Table Delete Action --}}
-                            <button class="btn btn-default">
-                                <i id="btnDelete" class="fa fa-trash text-danger" aria-hidden="true"></i>
-                            </button>
-                        </td>
-                    </tr>
-                    {{! -- ✂ ---------------------------------------------------------------------  --}}
+                    {{/each}}
                 </tbody>
                 {{!-- Table 'Add New Team Member' --}}
                 <tr>
@@ -185,8 +103,7 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">Team Member</th>
-                                        <th scope="col">Start Date</th>
-                                        <th scope="col">End Date</th>
+                                        <th scope="col">Requested Time Off (hours)</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -197,19 +114,27 @@
                                                 placeholder="Bob Smith">
                                         </td>
 
-                                        {{!-- Start Date --}}
+                                        {{!-- Requested Time Off (hours) --}}
                                         <td><input type="date" class="form-control" name="fDate" id="startDate"></td>
-
-                                        {{!-- End Date --}}
-                                        <td><input type="date" class="form-control" name="fDate" id="endDate"></td>
                                     </tr>
                                 </tbody>
                             </table>
+                            {{!-- Submit Success --}}
+                            <div style="display: none;" id="ptoSuccess" class="alert alert-success" role="alert">
+                                Your request has been submitted!
+                            </div>
+                            {{!-- Submit Failure --}}
+                            <div style="display: none;" id="ptoFail" class="alert alert-success" role="alert">
+                               You do not have enough PTO hours for this request.
+                            </div>
                             <button class="btn btn-darkblue float-right" id="addPTO">Add PTO</button>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+        <div id="tableData">
+
         </div>
         {{!-- Site Info Table [END] --}}
     </div>
