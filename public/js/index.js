@@ -19,7 +19,7 @@ $(document).ready(function () {
 
   // loginUser does a post to our "api/login" route and if successful, redirects us the the admin page - this function works for both new account and login.
   function loginUser(username, password) {
-    $.post("/api/login", {
+    $.post("/api/logins", {
       username: username,
       password: password
     })
@@ -40,6 +40,9 @@ $(document).ready(function () {
     var password = $("#password").val().trim();
 
     loginUser(username, password);
+    
+    console.log("Username: " + username);
+    console.log("Password: " + password);
 
     $("#username").val("");
     $("#password").val("");

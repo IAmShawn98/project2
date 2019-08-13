@@ -45,10 +45,9 @@ module.exports = function(app, passport) {
   // LOAD ADMIN PAGE with employees & tiers info
   app.get("/admin", function(req, res) {
     db.employees.findAll({}).then(function() {
-      res.render("admin");
-    });
-    // add tiers to this page also
-    db.tiers.findAll({}).then(function() {
+      db.tiers.findAll({}).then(function() {
+        // PH
+      });
       res.render("admin");
     });
   });
