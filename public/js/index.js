@@ -1,11 +1,12 @@
-$(document).ready(function () {
+$(document).ready(function() {
 
   // BUTTON HANDLING ---------------------------------------
 
   // NEW ACCOUNT button handling--------------
-  $("#newAccount").on("submit", function () {
-    console.log("newAccoun button pressed")
+  $("#newAccount").on("click", function () {
+    console.log("newAccount button pressed")
     // take in the values from the input fields
+    var newAccount = $("#fNewMember").val().trim();
     var username = $("#username").val().trim();
     var password = $("#password").val().trim();
     // If we have an email and password we run the loginUser function and clear the form
@@ -16,25 +17,27 @@ $(document).ready(function () {
     $("#alert").text("New account added.");
   });
 
-
-  // loginUser does a post to our "api/login" route and if successful, redirects us the the admin page - this function works for both new account and login.
+  // loginUser does a post to our "api/login" route and if successful, redirects us the the admin page - this function should work for both new account and login.
   function loginUser(username, password) {
+    console.log(username, password);
     $.post("/api/logins", {
       username: username,
       password: password
     })
-      .then(function () {
+      .then(function() {
         console.log("post request");
+        window.location.replace("/admin");
+
         // If there's an error, log the error
       })
-      .catch(function (err) {
-        console.log(err);
+      .catch(function(err) {
+        console.log("Error" + JSON.stringify(err));
       });
   }
 
   // LOGIN button handling--------------
   $("#login").on("click", function () {
-    alert("login button pressed");
+    console.log("login button pressed");
     // take in the values from the input fields
     var username = $("#username").val().trim();
     var password = $("#password").val().trim();
@@ -110,16 +113,12 @@ $(document).ready(function () {
   $("#addPTO").on("click", function () {
     // calculate hours and add to hours used and take away from hours remaining
     $("#fNewMember").val().trim();
-    var startDate = $("#startDate").val();
-    var endDate = $("#endDate").val();
-    // how to get # of hours from dates inputted? (Each date = 8 hrs)
-    var hoursRequested = (endDate - startDate) * 8;
-    var hoursRemaining;
-    var hoursUsed;
-    // if hours used is less than hours remaining, give error message
-    if (hoursRequested <= hoursRemaining) {
-      hoursRemaining - hoursRequested;
-      hoursUsed + hoursRequested;
+   var hoursRequested = $("#hoursRequested").val();
+   var hoursUsed;
+   // if hours used is less than hours remaining, give error message
+   if (hoursRequested <= hoursRemaining) {
+     hoursRemaining - hoursRequested;
+     hoursUsed + hoursRequested;
 
       // Submit Success.
       $("#ptoSuccess").show();

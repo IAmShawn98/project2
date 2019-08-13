@@ -12,17 +12,20 @@ var LocalStrategy = require("passport-local").Strategy;
 // LOGIN AUTHENTICATION Configuration -------------------------
 passport.use(
   new LocalStrategy(function (username, password, done) {
-    db.logins.findOne({ username: username }, function (err, user) {
-      if (err) {
-        return done(err);
+    db.logins.findOne({
+      where: { username: username }, function (err, user) { 
+        if (err) {
+          console.log("error in passport.use")
+          return done(err);
+        }
+        if (!user) {
+          return done(null, false, { message: "Incorrect username." });
+        }
+        if (!user.validPassword(password)) {
+          return done(null, false, { message: "Incorrect password." });
+        }
+        return done(null, user);
       }
-      if (!user) {
-        return done(null, false, { message: "Incorrect username." });
-      }
-      if (!user.validPassword(password)) {
-        return done(null, false, { message: "Incorrect password." });
-      }
-      return done(null, user);
     });
   })
 );
