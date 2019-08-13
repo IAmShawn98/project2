@@ -11,45 +11,30 @@ var LocalStrategy = require("passport-local").Strategy;
 
 // LOGIN AUTHENTICATION Configuration -------------------------
 passport.use(
-  new LocalStrategy(
-    {
-      username: "fEmail",
-    },
-    function(username, password, done) {
-      db.logins
-        .findOne({
-          where: {
-            username: username
-          }
-        })
-        .then(function(username) {
-          // If there's no user with the given email
-          if (!username) {
-            return done(null, false, {
-              message: "Incorrect email."
-            });
-          }
-          // If there is a user with the given email, but the password the user gives us is incorrect
-          else if (!username.validPassword(password)) {
-            return done(null, false, {
-              message: "Incorrect password."
-            });
-          }
-          // If none of the above, return the user
-          return done(null, username);
-        });
-    }
-  )
+  new LocalStrategy(function (username, password, done) {
+    db.logins.findOne({ username: username }, function (err, user) {
+      if (err) {
+        return done(err);
+      }
+      if (!user) {
+        return done(null, false, { message: "Incorrect username." });
+      }
+      if (!user.validPassword(password)) {
+        return done(null, false, { message: "Incorrect password." });
+      }
+      return done(null, user);
+    });
+  })
 );
 
 // In order to help keep authentication state across HTTP requests,
 // Sequelize needs to serialize and deserialize the user
 // Just consider this part boilerplate needed to make it all work
-passport.serializeUser(function(user, cb) {
+passport.serializeUser(function (user, cb) {
   cb(null, user);
 });
 
-passport.deserializeUser(function(obj, cb) {
+passport.deserializeUser(function (obj, cb) {
   cb(null, obj);
 });
 // ----------------------------------------------------
@@ -94,8 +79,8 @@ if (process.env.NODE_ENV === "test") {
 }
 
 // Starting the server, syncing our models ------------------------------------/
-db.sequelize.sync(syncOptions).then(function() {
-  app.listen(PORT, function() {
+db.sequelize.sync(syncOptions).then(function () {
+  app.listen(PORT, function () {
     console.log(
       "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
       PORT,

@@ -40,7 +40,7 @@ $(document).ready(function () {
     var password = $("#password").val().trim();
 
     loginUser(username, password);
-    
+
     console.log("Username: " + username);
     console.log("Password: " + password);
 
@@ -120,8 +120,13 @@ $(document).ready(function () {
     if (hoursRequested <= hoursRemaining) {
       hoursRemaining - hoursRequested;
       hoursUsed + hoursRequested;
+
+      // Submit Success.
+      $("#ptoSuccess").show();
+
     } else {
-      $("#ptoAlert").text("You do not have enough PTO hours for this request.")
+      // Submit Error.
+      $("#ptoFail").show();
     }
   });
 
