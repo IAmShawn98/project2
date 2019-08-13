@@ -1,4 +1,5 @@
 var db = require("../models");
+require("passport");
 
 module.exports = function(app, passport) {
   // LOAD LOGIN PAGE
@@ -18,31 +19,30 @@ module.exports = function(app, passport) {
     passport.authenticate("local", {
       failureFlash: "Invalid username or password.",
       successRedirect: "/admin",
-      // failureRedirect: "/index"
+      failureRedirect: "/index"
     }),
     function(req, res) {
       res.json(req.user);
+      console.log("auth routing");
     }
   );
 
-  
-
-  // TAKE IN NEW ACCOUNT INFO (Duplicate?)
-  // app.post("/api/logins", function(req, res) {
-  //   db.logins.create({
-  //     team_member: req.body.team_member,
-  //     username: req.body.username,
-  //     password: req.body.password
-  //   })
-  //     .then(function() {
-  //       console.log ("Req" + req);
-  //       console.log("res" + res);
-  //       res.redirect(307, "/api/logins");
-  //     })
-  //     .catch(function(err) {
-  //       res.status(401).json(err);
-  //     });
-  // });
+  // TAKE IN NEW ACCOUNT INFO
+  app.post("/api/logins", function(req, res) {
+    db.logins.create({
+      team_member: req.body.newAccount,
+      username: req.body.username,
+      password: req.body.password
+    })
+      .then(function() {
+        console.log ("Req" + req);
+        console.log("res" + res);
+        res.redirect(307, "/api/logins");
+      })
+      .catch(function(err) {
+        res.status(401).json(err);
+      });
+  });
   
   // LOAD ADMIN PAGE with employees & tiers info
   app.get("/admin", function(req, res) {
@@ -50,7 +50,7 @@ module.exports = function(app, passport) {
       db.tiers.findAll({}).then(function() {
         // PH
       });
-      res.render("admin", {employees: result});
+      res.render("admin", { employees: result });
       console.log(result);
 
       // res.json(response);

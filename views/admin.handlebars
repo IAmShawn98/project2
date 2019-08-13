@@ -66,6 +66,7 @@
                 </thead>
                 {{!-- Site Team Info 'Table Body' --}}
                 <tbody id="pTableBody">
+                    {{#each employees}}
                     <tr class="text-center">
                         <td>{{this.team_member}}</td>
                         <td>{{this.title}}</td>
@@ -74,6 +75,18 @@
                         <td>{{this.hours_remaining}}</td>
                         <td>{{this.start_date}}</td>
                         <td>
+                    
+                        <td>
+                        {{!-- Table Edit Action --}}
+                        <button class="btn btn-default">
+                        <i id="btnEdit" class="fa fa-pencil text-warning" aria-hidden="true"></i>
+                        </button>
+
+                        {{!-- Table Delete Action --}}
+                        <button class="btn btn-default">
+                        <i id="btnDelete" class="fa fa-trash text-danger" aria-hidden="true"></i>
+                        </button>
+                        </td>
                     </tr>
                     {{/each}}
                 </tbody>
