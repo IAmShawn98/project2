@@ -66,8 +66,6 @@
                 </thead>
                 {{!-- Site Team Info 'Table Body' --}}
                 <tbody id="pTableBody">
-                    {{#each employees}}
-                    {{!-- This is where the SQL data will populate --}}
                     <tr class="text-center">
                         <td>{{this.team_member}}</td>
                         <td>{{this.title}}</td>
@@ -139,14 +137,14 @@
 
         </div>
         {{!-- Site Info Table [END] --}}
-
+    </div>
         {{!-- Site Legend [START] --}}
-        <div id="legendCard" class="card row-lg-12">
+        <div id="legendCard" class="card row-md-13 l-card">
             <div class="card-body">
                 <table class="table">
                     {{!-- Site 'Badge Legend' Table Head --}}
                     <h4 class="text-center mb-4">Starting Hours</h4>
-                    <thead>
+                    <thead style="width: 100%">
                         <tr>
                             <th scope="col">Tiers</th>
                             <th scope="col">Hours</th>
@@ -162,11 +160,11 @@
                             <span class="badge shadow-md level- purple mt-1">Purple</span>
                         </td>
                         {{!-- All Badge Hours --}}
-                        <td class="col-sm-6">
-                            <span class="badge level- transparent text-dark">80</span>
-                            <span class="badge level- transparent text-dark mt-2">80</span>
-                            <span class="badge level- transparent text-dark mt-2">120</span>
-                            <span class="badge level- transparent text-dark mt-2">200</span>
+                        <td class="col">
+                            <span class="badge level-transparent text-dark">80</span>
+                            <span class="badge level-transparent text-dark mt-2">80</span>
+                            <span class="badge level-transparent text-dark mt-2">120</span>
+                            <span class="badge level-transparent text-dark mt-2">200</span>
                         </td>
                     </tbody>
                 </table>
