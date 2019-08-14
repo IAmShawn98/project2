@@ -76,17 +76,15 @@
                         <td>{{this.hours_remaining}}</td>
                         <td>{{this.start_date}}</td>
                         <td>
-                    
-                        <td>
-                        {{!-- Table Edit Action --}}
-                        <button class="btn btn-default">
-                        <i id="btnEdit" class="fa fa-pencil text-warning" aria-hidden="true"></i>
-                        </button>
+                            {{!-- Table Edit Action --}}
+                            <button class="btn btn-default">
+                                <i id="btnEdit" class="fa fa-pencil text-warning" aria-hidden="true"></i>
+                            </button>
 
-                        {{!-- Table Delete Action --}}
-                        <button class="btn btn-default">
-                        <i id="btnDelete" class="fa fa-trash text-danger" aria-hidden="true"></i>
-                        </button>
+                            {{!-- Table Delete Action --}}
+                            <button class="btn btn-default">
+                                <i id="btnDelete" class="fa fa-trash text-danger" aria-hidden="true"></i>
+                            </button>
                         </td>
                     </tr>
                     {{/each}}
@@ -129,7 +127,8 @@
                                         </td>
 
                                         {{!-- Requested Time Off (hours) --}}
-                                        <td><input type="date" class="form-control" name="fDate" id="startDate"></td>
+                                        <td><input type="text" placeholder="Example: 4" class="form-control"
+                                                name="fDate" id="startDate"></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -139,7 +138,7 @@
                             </div>
                             {{!-- Submit Failure --}}
                             <div style="display: none;" id="ptoFail" class="alert alert-success" role="alert">
-                               You do not have enough PTO hours for this request.
+                                You do not have enough PTO hours for this request.
                             </div>
                             <button class="btn btn-darkblue float-right" id="addPTO">Add PTO</button>
                         </div>
@@ -152,41 +151,41 @@
         </div>
         {{!-- Site Info Table [END] --}}
     </div>
-        {{!-- Site Legend [START] --}}
-        <div id="legendCard" class="card row-md-13 l-card">
-            <div class="card-body">
-                <table class="table">
-                    {{!-- Site 'Badge Legend' Table Head --}}
-                    <h4 class="text-center mb-4">Starting Hours</h4>
-                    <thead style="width: 100%">
-                        <tr>
-                            <th scope="col">Tiers</th>
-                            <th scope="col">Hours</th>
-                        </tr>
-                    </thead>
-                    {{!-- Site 'Badge Legend' Table Body --}}
-                    <tbody>
-                        {{!-- All Badge Levels --}}
-                        <td class="col-sm-6">
-                            <span class="badge shadow-md level- blue">Blue</span>
-                            <span class="badge shadow-md level- orange mt-1">Orange</span>
-                            <span class="badge shadow-md level- green mt-1">Green</span>
-                            <span class="badge shadow-md level- purple mt-1">Purple</span>
-                        </td>
-                        {{!-- All Badge Hours --}}
-                        <td class="col">
-                            <span class="badge level-transparent text-dark">80</span>
-                            <span class="badge level-transparent text-dark mt-2">80</span>
-                            <span class="badge level-transparent text-dark mt-2">120</span>
-                            <span class="badge level-transparent text-dark mt-2">200</span>
-                        </td>
-                    </tbody>
-                </table>
-                {{!-- Edit Link --}}
-                <span class="float-right ml-5" id="editTier"><a href="#Edit">Edit</a></span>
-            </div>
+    {{!-- Site Legend [START] --}}
+    <div id="legendCard" class="card row-md-13 l-card">
+        <div class="card-body">
+            <table class="table">
+                {{!-- Site 'Badge Legend' Table Head --}}
+                <h4 class="text-center mb-4">Starting Hours</h4>
+                <thead style="width: 100%">
+                    <tr>
+                        <th scope="col">Tiers</th>
+                        <th scope="col">Hours</th>
+                    </tr>
+                </thead>
+                {{!-- Site 'Badge Legend' Table Body --}}
+                <tbody>
+                    {{!-- All Badge Levels --}}
+                    <td class="col-sm-6">
+                        <span class="badge shadow-md level- blue">Blue</span>
+                        <span class="badge shadow-md level- orange mt-1">Orange</span>
+                        <span class="badge shadow-md level- green mt-1">Green</span>
+                        <span class="badge shadow-md level- purple mt-1">Purple</span>
+                    </td>
+                    {{!-- All Badge Hours --}}
+                    <td class="col">
+                        <span class="badge level-transparent text-dark">80</span>
+                        <span class="badge level-transparent text-dark mt-2">80</span>
+                        <span class="badge level-transparent text-dark mt-2">120</span>
+                        <span class="badge level-transparent text-dark mt-2">200</span>
+                    </td>
+                </tbody>
+            </table>
+            {{!-- Edit Link --}}
+            <span class="float-right ml-5" id="editTier"><a href="#Edit">Edit</a></span>
         </div>
     </div>
+</div>
 </div>
 {{!-- Site Legend [END] --}}
 
