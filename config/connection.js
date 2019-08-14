@@ -13,7 +13,7 @@ if (process.env.JAWSDB_URL) {
   connection = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: keys.password,
+    password: "Coly$e77",
     database: "timesheet_db"
   });
 }

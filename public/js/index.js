@@ -42,6 +42,7 @@ $(document).ready(function() {
     var username = $("#username").val().trim();
     var password = $("#password").val().trim();
 
+
     loginUser(username, password);
 
     console.log("Username: " + username);
