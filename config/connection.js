@@ -2,7 +2,7 @@
 
 // var PORT = process.env.PORT || 8080;
 
-require("dotenv").config();
+// require("dotenv").config();
 var keys = require("./keys.js");
 var mysql = require("mysql");
 
