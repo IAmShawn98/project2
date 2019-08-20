@@ -11,3 +11,8 @@ a tier-based system. Click <a href="https://stormy-taiga-41863.herokuapp.com/">h
 it a try!
 
 ![image](https://user-images.githubusercontent.com/47279070/63378568-7cd32580-c360-11e9-8a41-a9a4c92262ff.png)
+
+Site created by Shawn Luther, Connie Pope, and A.J. Weber.
+Technologies Used: Handlebars, CSS, Javascript, jQuery, Sequelize, Passport.js, Express, and Node.js.
+
+(This site is a current work-in-progress and is not fully functional.)
