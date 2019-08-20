@@ -9,3 +9,5 @@
 keep track of employee hours for vacation and paid time off on 
 a tier-based system. Click <a href="https://stormy-taiga-41863.herokuapp.com/">here</a> to give 
 it a try!
+
+![image](https://user-images.githubusercontent.com/47279070/63378568-7cd32580-c360-11e9-8a41-a9a4c92262ff.png)
